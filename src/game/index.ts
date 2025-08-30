@@ -21,4 +21,4 @@ const config : Phaser.Types.Core.GameConfig = {
     parent:"game-container",
     backgroundColor:"#1e1e2f"
 };
-export default new Phaser(config);
+export default new Phaser.Game(config);

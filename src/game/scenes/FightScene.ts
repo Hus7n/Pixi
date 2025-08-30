@@ -1,4 +1,4 @@
-import Phaser, { LEFT } from "phaser";
+import Phaser from "phaser";
 import Player from "../objects/Player";
 
 export default class FightScene extends Phaser.Scene{

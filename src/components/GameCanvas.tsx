@@ -1,5 +1,5 @@
 import { useEffect , useRef } from "react";
-import initGame from "../game";
+import "../game";
 
 export default function GameCanvas(){
     const ref = useRef<HTMLDivElement>(null);
@@ -8,9 +8,12 @@ export default function GameCanvas(){
         if(!ref.current) return;
 
         ref.current.id = "game-container";
+        
+        
 
+        const currentRef = ref.current;
         return() =>{
-            const canvas = ref.current?.querySelector("canvas");
+            const canvas = currentRef?.querySelector("canvas");
             if (canvas) canvas.remove();
         }
     },[]);

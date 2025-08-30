@@ -7,10 +7,16 @@ up:string;
 attack:string;
 }
 
+interface PlayerControls {
+    left: Phaser.Input.Keyboard.Key;
+    right: Phaser.Input.Keyboard.Key;
+    up: Phaser.Input.Keyboard.Key;
+    attack: Phaser.Input.Keyboard.Key;
+}
+
 export default class Player extends Phaser.Physics.Arcade.Sprite{
-controls:any;
+controls:PlayerControls;
 health:number=100;
-cursor:any;
 isAttacking : boolean= false;
 
 constructor(scene:Phaser.Scene, x:number, y:number,texture:string,keys:Controls){
@@ -20,7 +26,12 @@ constructor(scene:Phaser.Scene, x:number, y:number,texture:string,keys:Controls)
     scene.physics.add.existing(this);
 
     this.setCollideWorldBounds(true);
-    this.controls = scene.input.keyboard?.addKeys(keys);
+    const keyboardKeys = scene.input.keyboard?.addKeys(keys);
+    if (keyboardKeys) {
+        this.controls = keyboardKeys as PlayerControls;
+    } else {
+        throw new Error('Keyboard not available');
+    }
 }
 
 update(){

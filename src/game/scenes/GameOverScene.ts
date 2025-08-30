@@ -6,7 +6,7 @@ export default class GameOverScene extends Phaser.Scene{
     }
 
     create(data:{winner:string}){
-        this.add.text(400,250 ,`${data.winner}Wins!`,{
+        this.add.text(400,250 ,`${data.winner} Wins!`,{
             fontSize:"48px",
             color:"#fff",
         }).setOrigin(0.5);
